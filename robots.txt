@@ -1,1 +1,1 @@
-Sitemap: https://hds-sandbox.github.io/course-template/sitemap.xml
+Sitemap: https://hds-sandbox.github.io/AdvancedSingleCell/sitemap.xml
