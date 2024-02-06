@@ -1,0 +1,6 @@
+---
+title: "People"
+listing:
+  contents: cards/*.qmd
+  type: default
+---

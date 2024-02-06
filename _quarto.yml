@@ -1,0 +1,33 @@
+project:
+  type: website
+
+website:
+  title: "Course Template"
+  navbar:
+    logo: /img/logo.png
+    left:
+      - href: index.qmd
+        text: Introduction
+      - href: people.qmd
+        text: People
+      - href: rmd/rmarkdown_example.Rmd
+        text: Rmarkdown      
+      - href: jupyter_example.ipynb
+        text: Jupyter example
+    right: 
+      - icon: github
+        href: https://github.com/hds-sandbox
+        aria-label: GitHub
+      - icon: linkedin
+        href: https://www.linkedin.com/company/ucph-heads/
+        aria-label: LinkedIn
+      
+
+format:
+  html:
+    theme: 
+      light: [materia, css/materialight.scss]
+      dark: darkly
+    toc: true
+    include-in-header:
+      - file: "resources/bioschema.html"

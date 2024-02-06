@@ -1,0 +1,12 @@
+---
+title: "Jennifer Bartell"
+description: "Data Scientist and Project coordinator, Copenhagen University"
+#https://emojidb.org/quarto-emojis for emojis copypaste
+---
+
+![](jennie.jpg){width=300}
+
+
+[![](LinkedIN.png){width=50}](https://dk.linkedin.com/in/jagbartell)   [![](Outlook.png){width=50}](mailto:bartell@sund.ku.dk?subject=Test)   [![](mapPin.png){width=50}](https://heads.ku.dk/)   
+
+Jenifer is the Sandbox project coordinator, beyond being also a data scientist. She is based at the university of Copenhagen. Jennifer has a long experience in bacterial genomics and metabolomics, transcriptomics and pathway analysis.
