@@ -27,7 +27,7 @@ jobs:
 
       - name: Unzip Quarto on Linux
         if: runner.os == 'Linux'
-        run: /opt/quarto-1.3.450/bin/quarto.js publish gh-pages        
+        run: ls /opt && /opt/quarto-1.3.450/bin/quarto.js publish gh-pages        
 
 #      - name: Set up Quarto
 #        uses: quarto-dev/quarto-actions/setup@v2
