@@ -14,25 +14,25 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install -y libfontconfig-dev libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev
 
-      - name: Download Quarto on Linux
-        if: runner.os == 'Linux'
-        run: wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-linux-amd64.tar.gz -P /opt/
+      #- name: Download Quarto on Linux
+      #  if: runner.os == 'Linux'
+      #  run: wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-linux-amd64.tar.gz -P /opt/
 
-      - name: Unzip Quarto on Linux
-        if: runner.os == 'Linux'
-        run: tar -xvf /opt/quarto-1.3.450-linux-amd64.tar.gz -C /opt/
+      #- name: Unzip Quarto on Linux
+      #  if: runner.os == 'Linux'
+      #  run: tar -xvf /opt/quarto-1.3.450-linux-amd64.tar.gz -C /opt/
 
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Unzip Quarto on Linux
-        if: runner.os == 'Linux'
-        run: /opt/quarto-1.3.450/bin/quarto install tinytex && /opt/quarto-1.3.450/bin/quarto publish gh-pages        
+#      - name: Unzip Quarto on Linux
+#        if: runner.os == 'Linux'
+#        run: /opt/quarto-1.3.450/bin/quarto install tinytex && /opt/quarto-1.3.450/bin/quarto publish gh-pages        
 
-#      - name: Set up Quarto
-#        uses: quarto-dev/quarto-actions/setup@v2
-#        with:
-#          quarto-version: '1.3.450' 
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          quarto-version: '1.3.450' 
 #          tinytex: true
 
 #      - name: Install R
@@ -44,7 +44,7 @@ jobs:
 #      - name: Install pandoc
 #        uses: pandoc/actions/setup@{main}
 
-#      - name: Render and Publish
-#        uses: quarto-dev/quarto-actions/publish@v2
-#        with:
-#          target: gh-pages
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
