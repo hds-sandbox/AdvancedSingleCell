@@ -1,0 +1,21 @@
+channels:
+    - r
+    - conda-forge
+    - bioconda
+dependencies:
+    - r-irkernel
+    - ipykernel
+    - scanpy
+    - r-tidyr
+    - r-seurat=4.4.0
+    - bioconductor-mast
+    - bioconductor-multtest
+    - r-metap
+    - r-stringi
+    - r-readxl
+    - bioconductor-limma
+    - r-remotes
+    - r-wgcna
+    - r-qlcmatrix
+    - r-matrix=1.6_1
+    - r-dofuture

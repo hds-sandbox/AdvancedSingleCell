@@ -1,0 +1,27 @@
+name: /work/Data/Environment4
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - r-irkernel
+  - certifi
+  - ipykernel
+  - scanpy
+  - r-tidyr
+  - r-seurat=4.4.0
+  - bioconductor-mast
+  - bioconductor-multtest
+  - r-metap
+  - r-stringi
+  - r-readxl
+  - ca-certificates
+  - openssl
+  - bioconductor-limma
+  - r-remotes
+  - r-wgcna
+  - r-devtools
+  - r-qlcmatrix
+  - r-matrix=1.6_1
+  - conda-forge::r-dofuture
+prefix: /work/Data/Environment4

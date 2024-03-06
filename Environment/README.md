@@ -1,0 +1,3 @@
+`environment.yml` contains the `conda` environment for all the single cell modules of this repository (including both `python` and `R` packages). After creating the environment, you need to install additional packages by hand loading `R` and running the various commands written in `installations.R`. 
+
+Note that each command has a library folder specified in it, which you need to remove or to adapt to the folder where your environment is. Try first to remove it and see if the package actually is installed when you reopen `R` from your `conda` environment. If not, then you need to specify the environment folder.
