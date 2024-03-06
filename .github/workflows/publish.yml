@@ -20,14 +20,14 @@ jobs:
 
       - name: Unzip Quarto on Linux
         if: runner.os == 'Linux'
-        run: tar -xvf /opt/quarto-1.3.450-linux-amd64.tar.gz
+        run: tar -xvf /opt/quarto-1.3.450-linux-x64.tar.gz
 
       - name: Check out repository
         uses: actions/checkout@v4
 
       - name: Unzip Quarto on Linux
         if: runner.os == 'Linux'
-        run: /opt/quarto-1.3.450/bin/quarto publish gh-pages        
+        run: /opt/quarto-1.3.450/bin/quarto.js publish gh-pages        
 
 #      - name: Set up Quarto
 #        uses: quarto-dev/quarto-actions/setup@v2
