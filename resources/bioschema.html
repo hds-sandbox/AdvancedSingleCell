@@ -1,34 +1,86 @@
-<script type="application/ld+json" >
-    {
-      "@context": "https://schema.org",
-      "@id": "# Put here the course webpage (https://hds-sandbox.github.io/bulk_RNAseq_course/)",
-      "@type": "LearningResource",
-      "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-      "description": "# Course description",
-      "keywords": [
-        "# Keyword1, Keyword2, etc"
-      ],
-      "learningResourceType": [
-        "e-learning"
-      ],
-      "license": [
-        {
-          "@id": "# Link to license webpage (https://creativecommons.org/licenses/by-sa/4.0/)",
-          "@type": "CreativeWork"
-        }
-      ],
-      "mentions": [
-        {
-          "@id": "# Link to DOI or zenodo materials (10.5281/zenodo.7660225)",
-          "@type": "Thing"
-        },
-        {
-          "@id": "#Another link to DOI or zenodo materials (10.5281/zenodo.7565997)",
-          "@type": "Thing"
-        }
-      ],
-      "name": "# Name of the workshop (Introduction to bulk RNAseq analysis workshop)",
-      "educationalLevel": "# One of: Beginner, Intermediate or Advanced",
-      "audience": "# PhD, postdocs, MSc, etc"
-    }
-    </script >
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "LearningResource",
+    "@id": "https://hds-sandbox.github.io/AdvancedSingleCell",
+    "dct:conformsTo": {
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+        "@type": "CreativeWork"
+      }
+    },
+    "name": "Advanced Single Cell Tutorials",
+    "description": "Tutorials with both complete downstream analysis and guides for specific tasks, such as gene networks, cell-cell communication, clustering techniques, integration and comparison, data visualization.",
+    "keywords": [
+      "single cell",
+      "scRNA-seq",
+      "gene networks",
+      "single cell clustering",
+      "tutorial",
+      "bioinformatics",
+      "downstream analysis",
+      "single cell omics",
+      "data integration",
+      "single cell analysis"
+    ],
+    "about": [
+      {
+        "@type": "DefinedTerm",
+        "@id": "http://edamontology.org/data_3112",
+        "inDefinedTermSet": "http://edamontology.org",
+        "termCode": "data_3112",
+        "name": "Gene expression matrix",
+        "url": "https://edamontology.github.io/edam-browser/#http://edamontology.org/data_3112"
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "http://edamontology.org/topic_0769",
+        "inDefinedTermSet": "http://edamontology.org",
+        "termCode": "topic_0769",
+        "name": "Workflows",
+        "url": "https://edamontology.github.io/edam-browser/#http://edamontology.org/topic_0769"
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "http://edamontology.org/topic_3345",
+        "inDefinedTermSet": "http://edamontology.org",
+        "termCode": "topic_3345",
+        "name": "Data identity and mapping",
+        "url": "https://edamontology.github.io/edam-browser/#http://edamontology.org/topic_3345"
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "http://edamontology.org/data_3670",
+        "inDefinedTermSet": "http://edamontology.org",
+        "termCode": "data_3670",
+        "name": "Online course",
+        "url": "https://edamontology.github.io/edam-browser/#http://edamontology.org/data_3670"
+      }
+    ],
+    "abstract": "Tutorials with both complete downstream analysis and guides for specific tasks, such as gene networks, cell-cell communication, clustering techniques, integration and comparison, data visualization.",
+    "audience": [
+      {
+        "@type": "Audience",
+        "audienceType": "Students"
+      },
+      {
+        "@type": "Audience",
+        "audienceType": "PhD students"
+      },
+      {
+        "@type": "Audience",
+        "audienceType": "Postdoctoral researchers"
+      }
+    ],
+    "competencyRequired": [
+      "Basic python programming",
+      "Basic R programming",
+      "Machine learning basics",
+      "Basic cell biology knowledge"
+    ],
+    "inLanguage": ["en-US"],
+    "learningResourceType": ["tutorials"],
+    "license": "https://spdx.org/licenses/MIT.html",
+    "url": "https://hds-sandbox.github.io/AdvancedSingleCell"
+  }
+</script>

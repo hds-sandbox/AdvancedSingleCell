@@ -2,25 +2,21 @@ project:
   type: website
 
 website:
-  title: "Course Template"
+  title: "Advanced single cell analysis"
   navbar:
     logo: /img/logo.png
     left:
       - href: index.qmd
         text: Introduction
-      - href: people.qmd
-        text: People
-      - href: rmd/rmarkdown_example.Rmd
-        text: Rmarkdown      
-      - href: jupyter_example.ipynb
-        text: Jupyter example
+      - href: Modules/Infected_Plant_Gene_Analysis/Notebook/notebook.ipynb
+        text: Notebook test
     right: 
       - icon: github
-        href: https://github.com/hds-sandbox
+        href: https://github.com/hds-sandbox/AdvancedSingleCell
         aria-label: GitHub
-      - icon: linkedin
-        href: https://www.linkedin.com/company/ucph-heads/
-        aria-label: LinkedIn
+      - icon: docker
+        href: docker
+        aria-label: Docker
       
 
 format:
