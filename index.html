@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-01-01">
+<meta name="dcterms.date" content="2024-03-06">
 
-<title>Course Template - Introduction</title>
+<title>Advanced single cell analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,27 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -68,13 +48,7 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -83,46 +57,97 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@id": "# Put here the course webpage (https://hds-sandbox.github.io/bulk_RNAseq_course/)",
-      "@type": "LearningResource",
-      "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-      "description": "# Course description",
-      "keywords": [
-        "# Keyword1, Keyword2, etc"
-      ],
-      "learningResourceType": [
-        "e-learning"
-      ],
-      "license": [
-        {
-          "@id": "# Link to license webpage (https://creativecommons.org/licenses/by-sa/4.0/)",
-          "@type": "CreativeWork"
-        }
-      ],
-      "mentions": [
-        {
-          "@id": "# Link to DOI or zenodo materials (10.5281/zenodo.7660225)",
-          "@type": "Thing"
-        },
-        {
-          "@id": "#Another link to DOI or zenodo materials (10.5281/zenodo.7565997)",
-          "@type": "Thing"
-        }
-      ],
-      "name": "# Name of the workshop (Introduction to bulk RNAseq analysis workshop)",
-      "educationalLevel": "# One of: Beginner, Intermediate or Advanced",
-      "audience": "# PhD, postdocs, MSc, etc"
-    }
-    </script>
+  {
+    "@context": "https://schema.org/",
+    "@type": "LearningResource",
+    "@id": "https://hds-sandbox.github.io/AdvancedSingleCell",
+    "dct:conformsTo": {
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+        "@type": "CreativeWork"
+      }
+    },
+    "name": "Advanced Single Cell Tutorials",
+    "description": "Tutorials with both complete downstream analysis and guides for specific tasks, such as gene networks, cell-cell communication, clustering techniques, integration and comparison, data visualization.",
+    "keywords": [
+      "single cell",
+      "scRNA-seq",
+      "gene networks",
+      "single cell clustering",
+      "tutorial",
+      "bioinformatics",
+      "downstream analysis",
+      "single cell omics",
+      "data integration",
+      "single cell analysis"
+    ],
+    "about": [
+      {
+        "@type": "DefinedTerm",
+        "@id": "http://edamontology.org/data_3112",
+        "inDefinedTermSet": "http://edamontology.org",
+        "termCode": "data_3112",
+        "name": "Gene expression matrix",
+        "url": "https://edamontology.github.io/edam-browser/#http://edamontology.org/data_3112"
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "http://edamontology.org/topic_0769",
+        "inDefinedTermSet": "http://edamontology.org",
+        "termCode": "topic_0769",
+        "name": "Workflows",
+        "url": "https://edamontology.github.io/edam-browser/#http://edamontology.org/topic_0769"
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "http://edamontology.org/topic_3345",
+        "inDefinedTermSet": "http://edamontology.org",
+        "termCode": "topic_3345",
+        "name": "Data identity and mapping",
+        "url": "https://edamontology.github.io/edam-browser/#http://edamontology.org/topic_3345"
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "http://edamontology.org/data_3670",
+        "inDefinedTermSet": "http://edamontology.org",
+        "termCode": "data_3670",
+        "name": "Online course",
+        "url": "https://edamontology.github.io/edam-browser/#http://edamontology.org/data_3670"
+      }
+    ],
+    "abstract": "Tutorials with both complete downstream analysis and guides for specific tasks, such as gene networks, cell-cell communication, clustering techniques, integration and comparison, data visualization.",
+    "audience": [
+      {
+        "@type": "Audience",
+        "audienceType": "Students"
+      },
+      {
+        "@type": "Audience",
+        "audienceType": "PhD students"
+      },
+      {
+        "@type": "Audience",
+        "audienceType": "Postdoctoral researchers"
+      }
+    ],
+    "competencyRequired": [
+      "Basic python programming",
+      "Basic R programming",
+      "Machine learning basics",
+      "Basic cell biology knowledge"
+    ],
+    "inLanguage": ["en-US"],
+    "learningResourceType": ["tutorials"],
+    "license": "https://spdx.org/licenses/MIT.html",
+    "url": "https://hds-sandbox.github.io/AdvancedSingleCell"
+  }
+</script>
 
 
 </head>
@@ -131,14 +156,14 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./img/logo.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Course Template</span>
+    <span class="navbar-title">Advanced single cell analysis</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -148,38 +173,25 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Introduction</span></a>
+    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./people.html"> 
-<span class="menu-text">People</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./rmd/rmarkdown_example.html"> 
-<span class="menu-text">Rmarkdown</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./jupyter_example.html"> 
-<span class="menu-text">Jupyter example</span></a>
+    <a class="nav-link" href="./Modules/Infected_Plant_Gene_Analysis/Notebook/notebook.html" rel="" target="">
+ <span class="menu-text">Notebook test</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/hds-sandbox"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/hds-sandbox/AdvancedSingleCell" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/company/ucph-heads/"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
-</i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -192,8 +204,12 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link active" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
-  <li><a href="#print-a-table" id="toc-print-a-table" class="nav-link" data-scroll-target="#print-a-table">Print a table</a></li>
+  <li><a href="#running-the-notebooks" id="toc-running-the-notebooks" class="nav-link active" data-scroll-target="#running-the-notebooks">Running the notebooks</a></li>
+  <li><a href="#available-tutorials" id="toc-available-tutorials" class="nav-link" data-scroll-target="#available-tutorials">Available tutorials</a>
+  <ul class="collapse">
+  <li><a href="#integrated-analysis-of-single-cell-transcriptomics-datasets-across-conditions" id="toc-integrated-analysis-of-single-cell-transcriptomics-datasets-across-conditions" class="nav-link" data-scroll-target="#integrated-analysis-of-single-cell-transcriptomics-datasets-across-conditions">Integrated Analysis of Single-Cell Transcriptomics Datasets Across Conditions</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -202,7 +218,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction</h1>
+<h1 class="title">Advanced single cell analysis</h1>
 </div>
 
 
@@ -213,596 +229,63 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
+      <p class="date">March 6, 2024</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 6, 2024</p>
+      <p class="date-modified">March 6, 2024</p>
     </div>
   </div>
     
   </div>
   
 
-
 </header>
 
-
-<p><strong>Here</strong> is <em>where</em> you will write an abstract about the course. This is an example of the use of citations <span class="citation" data-cites="creative_commons_2022">(<a href="#ref-creative_commons_2022" role="doc-biblioref"><span>“When We Share, Everyone Wins,”</span> n.d.</a>)</span> and <span class="citation" data-cites="Garcia2020">(<a href="#ref-Garcia2020" role="doc-biblioref">Garcia et al. 2020</a>)</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Course Overview">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Course Overview
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>Welcome! This homepage contains <strong>specialized tutorials</strong> to perform single cell analysis. The main languages proposed here are <code>python</code> and <code>R</code>, and rarely <code>bash</code> for specific command-line tools. The page will be populated both with examples of complete downstream analysis and guides for specific tasks, such as gene networks, cell-cell communication, clustering techniques, integration and comparison, data visualization.</p>
+<p>All available tutorials are found in the toolbar menu <code>Material</code>.</p>
+<section id="running-the-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="running-the-notebooks">Running the notebooks</h2>
+<p>All tutorials can be seen in this webpage as compiled jupyter notebooks for inspiration and self-learning. To execute the notebooks you have various options:</p>
 <ul>
-<li><p>📖 <strong>Syllabus:</strong></p>
-<ol type="1">
-<li>First item<br>
-</li>
-<li>Second item</li>
-</ol></li>
-<li><p><strong>Total Time Estimation:</strong> X hours<br>
-[comment]: # (No Property in Bioschema)</p></li>
-<li><p>:file_folder: <strong>Supporting Materials:</strong><br>
-[comment]: # (Property in Bioschema: mentions)</p></li>
-<li><p>:man_technologist: <strong>Target Audience:</strong> PhD, MsC, etc. [comment]: # (Property in Bioschema: audience)</p></li>
-<li><p>:woman_student: <strong>Level:</strong> Beginner/Intermediate/Advanced [comment]: # (Property in Bioschema: educationalLevel)</p></li>
-<li><p>:lock: <strong>License:</strong> <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.</a> [comment]: # (Property in Biochema: licence)</p></li>
-<li><p>:coin: <strong>Funding:</strong> This project was funded by the Novo Nordisk Fonden (NNF20OC0063268). [comment]: # (Funding by NNF and others)</p></li>
+<li><p>Access to the uCloud interactive computing system (for danish universities/institutional users), where we have developed the <code>Transcriptomics Sandbox</code> app. This has a wide choice of modules for self-learning in transcriptomics (bulkRNA and single cell RNA analysis).</p></li>
+<li><p>Access to GenomeDK (danish bioinformatics cluster, for which you need to have an account) and execution of a Docker container through <code>singularity</code>.</p></li>
+<li><p>Docker container, executable on any system running the Docker engine (we suggest using your own/local computing cluster or a performant computer, since most tutorials will need a large amount of RAM memory and CPU power). You can also run the Docker container through the <code>Singularity</code> software.</p></li>
+<li><p>Package setup on a Conda environment, where you create a conda environment and perform the package installations to run the tutorials (note that some packages are not present in conda, and you need to install them manually by opening <code>R</code>).</p></li>
 </ul>
+<p>The instructions are found in the toolbar menu <code>Access</code>.</p>
+</section>
+<section id="available-tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="available-tutorials">Available tutorials</h2>
+<section id="integrated-analysis-of-single-cell-transcriptomics-datasets-across-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="integrated-analysis-of-single-cell-transcriptomics-datasets-across-conditions">Integrated Analysis of Single-Cell Transcriptomics Datasets Across Conditions</h3>
+<p>Integrated analysis of single-cell transcriptomics datasets from the plant species <em>Lotus Japonicus</em>. The datasets are <em>control</em> and <em>rhizobia-infected</em> root samples. This data offers a comprehensive example for data integration and analysis of</p>
+<ul>
+<li>key regulatory networks</li>
+<li>signaling pathways</li>
+<li>cell-type-specific responses to infections</li>
+</ul>
+<p>The comparative analysis includes clustering, conserved and divergent transcriptional signatures, gene networks, use of GO terms, differential expression.</p>
+<p>The presented tutorial does not only enhance the understanding of implications of specific conditions, but also provides valuable insights for comparative analysis in the health field. By extrapolating methodologies and findings, researchers can apply similar integrative approaches to analyze single-cell transcriptomics datasets from human or animal studies under different disease conditions.</p>
+<p>This cross-disciplinary approach facilitates the identification of shared regulatory networks and disease-specific signatures, advancing our knowledge of host-pathogen interactions and aiding in the development of targeted therapeutic interventions for infectious diseases.</p>
+<section id="data-availability" class="level4">
+<h4 class="anchored" data-anchor-id="data-availability">Data availability</h4>
+<div style="text-align: center;">
+<p><a href="https://zenodo.org/records/10782590" style="display: inline-block; margin-right: 20px; background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Data repository</a> <a href="https://github.com/hds-sandbox/AdvancedSingleCell/tree/main/Modules/Infected_Plant_Gene_Analysis" style="display: inline-block; background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Code repository</a></p>
 </div>
-</div>
-<p>!!! warning “Course Requirements” - First requirement - Second requirement</p>
-<p>This is where you should write a longer introduction to the course.</p>
-<p>!!! info “Goals” By the end of this workshop, you should be able to:</p>
-<pre><code>- Goal 1
-- Goal 2
--   </code></pre>
+</section>
+</section>
 <section id="acknowledgements" class="level3">
 <h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
-<ul>
-<li>First acknowledgement</li>
-</ul>
-</section>
-<section id="print-a-table" class="level3">
-<h3 class="anchored" data-anchor-id="print-a-table">Print a table</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div id="kghemhrfxo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kghemhrfxo table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#kghemhrfxo thead, #kghemhrfxo tbody, #kghemhrfxo tfoot, #kghemhrfxo tr, #kghemhrfxo td, #kghemhrfxo th {
-  border-style: none;
-}
-
-#kghemhrfxo p {
-  margin: 0;
-  padding: 0;
-}
-
-#kghemhrfxo .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#kghemhrfxo .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#kghemhrfxo .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#kghemhrfxo .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#kghemhrfxo .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#kghemhrfxo .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#kghemhrfxo .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#kghemhrfxo .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#kghemhrfxo .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#kghemhrfxo .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#kghemhrfxo .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#kghemhrfxo .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#kghemhrfxo .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#kghemhrfxo .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#kghemhrfxo .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kghemhrfxo .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#kghemhrfxo .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#kghemhrfxo .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#kghemhrfxo .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kghemhrfxo .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#kghemhrfxo .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kghemhrfxo .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#kghemhrfxo .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kghemhrfxo .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#kghemhrfxo .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kghemhrfxo .gt_left {
-  text-align: left;
-}
-
-#kghemhrfxo .gt_center {
-  text-align: center;
-}
-
-#kghemhrfxo .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#kghemhrfxo .gt_font_normal {
-  font-weight: normal;
-}
-
-#kghemhrfxo .gt_font_bold {
-  font-weight: bold;
-}
-
-#kghemhrfxo .gt_font_italic {
-  font-style: italic;
-}
-
-#kghemhrfxo .gt_super {
-  font-size: 65%;
-}
-
-#kghemhrfxo .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#kghemhrfxo .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#kghemhrfxo .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#kghemhrfxo .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#kghemhrfxo .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#kghemhrfxo .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#kghemhrfxo .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="sample" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">sample</th>
-<th id="fastq_1" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">fastq_1</th>
-<th id="fastq_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">fastq_2</th>
-<th id="strandedness" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">strandedness</th>
-<th id="condition" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">condition</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="sample">Control_3</td>
-<td class="gt_row gt_left" headers="fastq_1">778339/merge/Irrel_kd_3.fastq.gz</td>
-<td class="gt_row gt_center" headers="fastq_2">NA</td>
-<td class="gt_row gt_left" headers="strandedness">unstranded</td>
-<td class="gt_row gt_left" headers="condition">control</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="sample">Control_2</td>
-<td class="gt_row gt_left" headers="fastq_1">778339/merge/Irrel_kd_2.fastq.gz</td>
-<td class="gt_row gt_center" headers="fastq_2">NA</td>
-<td class="gt_row gt_left" headers="strandedness">unstranded</td>
-<td class="gt_row gt_left" headers="condition">control</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="sample">Control_1</td>
-<td class="gt_row gt_left" headers="fastq_1">778339/merge/Irrel_kd_1.fastq.gz</td>
-<td class="gt_row gt_center" headers="fastq_2">NA</td>
-<td class="gt_row gt_left" headers="strandedness">unstranded</td>
-<td class="gt_row gt_left" headers="condition">control</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="sample">Mov10_oe_3</td>
-<td class="gt_row gt_left" headers="fastq_1">778339/merge/Mov10_oe_3.fastq.gz</td>
-<td class="gt_row gt_center" headers="fastq_2">NA</td>
-<td class="gt_row gt_left" headers="strandedness">unstranded</td>
-<td class="gt_row gt_left" headers="condition">MOV10_overexpression</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="sample">Mov10_oe_2</td>
-<td class="gt_row gt_left" headers="fastq_1">778339/merge/Mov10_oe_2.fastq.gz</td>
-<td class="gt_row gt_center" headers="fastq_2">NA</td>
-<td class="gt_row gt_left" headers="strandedness">unstranded</td>
-<td class="gt_row gt_left" headers="condition">MOV10_overexpression</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="sample">Mov10_oe_1</td>
-<td class="gt_row gt_left" headers="fastq_1">778339/merge/Mov10_oe_1.fastq.gz</td>
-<td class="gt_row gt_center" headers="fastq_2">NA</td>
-<td class="gt_row gt_left" headers="strandedness">unstranded</td>
-<td class="gt_row gt_left" headers="condition">MOV10_overexpression</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="sample">Mov10_kd_3</td>
-<td class="gt_row gt_left" headers="fastq_1">778339/merge/Mov10_kd_3.fastq.gz</td>
-<td class="gt_row gt_center" headers="fastq_2">NA</td>
-<td class="gt_row gt_left" headers="strandedness">unstranded</td>
-<td class="gt_row gt_left" headers="condition">MOV10_knockdown</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="sample">Mov10_kd_2</td>
-<td class="gt_row gt_left" headers="fastq_1">778339/merge/Mov10_kd_2.fastq.gz</td>
-<td class="gt_row gt_center" headers="fastq_2">NA</td>
-<td class="gt_row gt_left" headers="strandedness">unstranded</td>
-<td class="gt_row gt_left" headers="condition">MOV10_knockdown</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-
 
 
 </section>
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Garcia2020" class="csl-entry" role="listitem">
-Garcia, Leyla, Bérénice Batut, Melissa L. Burke, Mateusz Kuzak, Fotis Psomopoulos, Ricardo Arcila, Teresa K. Attwood, et al. 2020. <span>“<span class="nocase">Ten simple rules for making training materials FAIR</span>.”</span> <em>PLoS Computational Biology</em> 16 (5): 1–9. <a href="https://doi.org/10.1371/journal.pcbi.1007854">https://doi.org/10.1371/journal.pcbi.1007854</a>.
-</div>
-<div id="ref-creative_commons_2022" class="csl-entry" role="listitem">
-<span>“When We Share, Everyone Wins.”</span> n.d. Creative Commons. <a href="https://creativecommons.org/">https://creativecommons.org/</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -844,33 +327,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -939,15 +395,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1026,9 +480,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1038,17 +493,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1061,125 +507,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1223,7 +550,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1249,32 +575,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1335,7 +635,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 
