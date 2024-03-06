@@ -14,9 +14,6 @@ website:
       - icon: github
         href: https://github.com/hds-sandbox/AdvancedSingleCell
         aria-label: GitHub
-      - icon: docker
-        href: docker
-        aria-label: Docker
       
 
 format:
