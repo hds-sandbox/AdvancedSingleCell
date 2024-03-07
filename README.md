@@ -1,23 +1,15 @@
 # Advanced single cell analysis
 
-This repository contains multiple independent modules to execute advanced single cell analysis. Modules are mostly in form of tutorials. You can [refer to the repository's webpage](https://hds-sandbox.github.io/AdvancedSingleCell) to see all the modules we have created. The repository will be populate over time with both examples in the `R` programming languages. This repository contains also the environments to recreate locally the modules and a Docker container to export the material to other computing clusters.
+This repository contains multiple independent modules to execute advanced single cell analysis. Modules are mostly in form of tutorials. You can [refer to the repository's webpage](https://hds-sandbox.github.io/AdvancedSingleCell) to see all the modules we have created. The repository will be populate over time with both examples in the `R` and  `python` programming languages, with some eventual additions of the `bash` command line. This repository contains also the environments to recreate locally the modules and a Docker container to export the material to other computing clusters.
 
-The data can be downloaded [from the Zenodo repository ?????????????????????](????????????????).
+## Data availability
 
-# Content
+For each module, the related data is downloadable from the Zenodo repository shown in the webpage.
 
-The analysis you can find are:
+## Citation
 
-## Clustering and gene analysis across different conditions
+If you publish a paper or present a project where you have used our material:
 
-### Plant data
-
-An example of comparison of infected and non-infected plants with a rhizobia pathogen.
-
-### Expression and Spatial transcriptomics profiles in the brain
-
-To Be Done - 10X v3 data aligned with 
-
-### Single cell and Single nuclei comparison of ape testis
-
-To be Done - Carl's data
+- cite the data (with the Zenodo DOI and also the eventual publication presenting the data)
+- cite this repository (with the Zenodo DOI ???)
+- acknowledge the Novo Nordisk Foundation grant *Danish halth data science sandbox, Grant Number NNF20OC0063268 *
