@@ -33,7 +33,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: '1.3.450' 
-#          tinytex: true
+          tinytex: true
 
 #      - name: Install R
 #        uses: r-lib/actions/setup-r@v2
