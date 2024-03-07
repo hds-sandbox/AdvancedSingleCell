@@ -52,3 +52,9 @@ This cross-disciplinary approach facilitates the identification of shared regula
 
 
 ### Acknowledgements
+
+If you publish a paper or present a project where you have used our material:
+
+- cite the data (with the Zenodo DOI and also the eventual publication presenting the data)
+- cite the tutorials repository (with the Zenodo DOI ???)
+- acknowledge the Novo Nordisk Foundation grant *Danish halth data science sandbox, Grant Number NNF20OC0063268 *
