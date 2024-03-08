@@ -121,3 +121,38 @@ addGOterms <- function(input_table, go_table, gene_column='gene', n.cores=4){
 
     return(input_table)
     }
+
+
+## Function that check for the presence of data and
+## downloads it if necessary
+
+downloadData <- function(){
+# Check if the folder exists
+if (!dir.exists("../Data")) {
+  print("Data folder does not exists! Create one")
+  dir.create("../Data")
+} else {
+  print("Data folder exists. Check for files and eventually downloads them. Please wait.")
+}
+
+if (!file.exists("../Data/control1.gz") && !dir.exists("../Data/control1")){
+    print("Download ../Data/control1.gz and unzip")
+    system("wget https://zenodo.org/records/10782590/files/control1.gz?download=1 -O ../Data/control1.gz")
+    system("tar -xvf ../Data/control1.gz -C ../Data")}
+if (!file.exists("../Data/control2.normalized.h5Seurat")){
+    print("Download control2.normalized.h5Seurat")
+    system("wget https://zenodo.org/records/10782590/files/control2.normalized.h5Seurat?download=1 -O ../Data/control2.normalized.h5Seurat")}
+if (!file.exists("../Data/infected1.normalized.h5Seurat")){
+      print("Download infected1.normalized.h5Seurat")
+      system("wget https://zenodo.org/records/10782590/files/infected1.normalized.h5Seurat?download=1 -O ../Data/infected1.normalized.h5Seurat")}
+if (!file.exists("../Data/infected2.normalized.h5Seurat")){
+      print("Download infected2.normalized.h5Seurat")
+      system("wget https://zenodo.org/records/10782590/files/infected2.normalized.h5Seurat?download=1 -O ../Data/infected2.normalized.h5Seurat")}
+if (!file.exists("../Data/data_lavinia.RDS")){
+      print("Download reference clustering")
+      system("wget https://zenodo.org/records/10782590/files/data_lavinia.RDS?download=1 -O ../Data/data_lavinia.RDS")}
+if (!file.exists("../Data/LJ_GO_terms.gaf")){
+      print("Download Go terms data")
+      system("wget https://zenodo.org/records/10782590/files/LJ_GO_terms.gaf?download=1 -O ../Data/LJ_GO_terms.gaf")}
+print("Done!")
+}
