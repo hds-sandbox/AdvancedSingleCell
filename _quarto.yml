@@ -8,7 +8,7 @@ website:
     left:
       - href: index.qmd
         text: Introduction
-      - href: Modules/Infected_Plant_Gene_Analysis/Notebook/notebook.ipynb
+      - href: Modules/Infected_Plant_Gene_Analysis/Notebook/notebook.source.ipynb
         text: Notebook test
     right: 
       - icon: github
