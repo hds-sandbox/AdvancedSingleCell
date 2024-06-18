@@ -129,30 +129,59 @@ addGOterms <- function(input_table, go_table, gene_column='gene', n.cores=4){
 downloadData <- function(){
 # Check if the folder exists
 if (!dir.exists("../Data")) {
-  print("Data folder does not exists! Create one")
+  message("Data folder does not exists! Create one")
   dir.create("../Data")
 } else {
-  print("Data folder exists. Check for files and eventually downloads them. Please wait.")
+  message("Data folder exists. Check for files and eventually downloads them. Please wait.")
 }
 
 if (!file.exists("../Data/control1.gz") && !dir.exists("../Data/control1")){
-    print("Download ../Data/control1.gz and unzip")
+    message("Download ../Data/control1.gz and unzip")
     system("wget https://zenodo.org/records/10782590/files/control1.gz?download=1 -O ../Data/control1.gz")
     system("tar -xvf ../Data/control1.gz -C ../Data")}
 if (!file.exists("../Data/control2.normalized.h5Seurat")){
-    print("Download control2.normalized.h5Seurat")
+    mesage("Download control2.normalized.h5Seurat")
     system("wget https://zenodo.org/records/10782590/files/control2.normalized.h5Seurat?download=1 -O ../Data/control2.normalized.h5Seurat")}
 if (!file.exists("../Data/infected1.normalized.h5Seurat")){
-      print("Download infected1.normalized.h5Seurat")
+      message("Download infected1.normalized.h5Seurat")
       system("wget https://zenodo.org/records/10782590/files/infected1.normalized.h5Seurat?download=1 -O ../Data/infected1.normalized.h5Seurat")}
 if (!file.exists("../Data/infected2.normalized.h5Seurat")){
-      print("Download infected2.normalized.h5Seurat")
+      message("Download infected2.normalized.h5Seurat")
       system("wget https://zenodo.org/records/10782590/files/infected2.normalized.h5Seurat?download=1 -O ../Data/infected2.normalized.h5Seurat")}
 if (!file.exists("../Data/data_lavinia.RDS")){
-      print("Download reference clustering")
+      message("Download reference clustering")
       system("wget https://zenodo.org/records/10782590/files/data_lavinia.RDS?download=1 -O ../Data/data_lavinia.RDS")}
 if (!file.exists("../Data/LJ_GO_terms.gaf")){
-      print("Download Go terms data")
+      message("Download Go terms data")
       system("wget https://zenodo.org/records/10782590/files/LJ_GO_terms.gaf?download=1 -O ../Data/LJ_GO_terms.gaf")}
-print("Done!")
+message("Done!")
+}
+
+## Function that assigns cluster names
+## based on the highest score for the markers
+## unnamed clusters must be in the Ident() of the object
+## markersList is a list of markers where each element has name "cellType_scoring"
+## (or any other name than "scoring", but it is important that the cellType comes
+## first and that there is an underscore between the two words)
+                                
+clusterNames <- function(seuratObject, markersList){
+
+    message("Cluster assignment started")
+    
+    clusterAssign <- as.vector(Idents(seuratObject))
+    newClusterAssign <- clusterAssign
+    for(CLST in unique(clusterAssign)){
+        totalScore <- list()
+        totalScoreNames <- as.vector( sapply(names(features_list), function(x) unlist(strsplit(x,"_"))[1]) )
+        for(NAME in totalScoreNames){
+            longNAME <- paste(NAME, "scoring", sep="_")
+            totalScore[NAME] = sum(as.vector(seuratObject@meta.data[clusterAssign == CLST,longNAME]))
+            }
+        assignment <- totalScoreNames[ which.max(as.vector(totalScore)) ]
+        newClusterAssign[ newClusterAssign==CLST ] <- assignment
+        message(paste0("--- ", assignment, " assigned to ", CLST))
+        }
+
+    message("Cluster assignment finished")
+    newClusterAssign
 }
