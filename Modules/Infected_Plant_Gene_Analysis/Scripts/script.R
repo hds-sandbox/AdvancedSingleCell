@@ -140,7 +140,7 @@ if (!file.exists("../Data/control1.gz") && !dir.exists("../Data/control1")){
     system("wget https://zenodo.org/records/10782590/files/control1.gz?download=1 -O ../Data/control1.gz")
     system("tar -xvf ../Data/control1.gz -C ../Data")}
 if (!file.exists("../Data/control2.normalized.h5Seurat")){
-    mesage("Download control2.normalized.h5Seurat")
+    message("Download control2.normalized.h5Seurat")
     system("wget https://zenodo.org/records/10782590/files/control2.normalized.h5Seurat?download=1 -O ../Data/control2.normalized.h5Seurat")}
 if (!file.exists("../Data/infected1.normalized.h5Seurat")){
       message("Download infected1.normalized.h5Seurat")
