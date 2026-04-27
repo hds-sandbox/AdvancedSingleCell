@@ -1,0 +1,13 @@
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - star>=2.7.11b,<3
+  - salmon
+  - lima
+  - r-seurat
+  - jupyterlab
+  - scanpy
+  - seqtk
+  - pip
