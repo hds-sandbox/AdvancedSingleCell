@@ -5,8 +5,15 @@ channels:
 dependencies:
   - star>=2.7.11b,<3
   - r-seurat
-  - r-pacman
-  - r-stringi
+  - r-irkernel
+  - r-hdf5r 
+  - r-wgcna 
+  - r-igraph 
+  - r-tidyverse 
+  - r-ggraph 
+  - r-harmony 
+  - r-enrichr 
+  - r-devtools
   - jupyterlab
   - seqtk
   - pip
