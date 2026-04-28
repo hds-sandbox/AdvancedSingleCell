@@ -136,7 +136,9 @@ Follow tutorial notebooks to analyze your own data. Notebooks are interactive do
 
 ## Running the notebooks
 
- You can run the notebooks on the cluster using `jupyterlab`, a simple interface for coding. Open a new terminal in your personal folder. Start your conda environment
+ You can run the notebooks on the cluster using `jupyterlab`, a simple interface for coding. Before starting that, copy the two files in format `.ipynb` from the shared folder into your personal folder. 
+ 
+ Then open a new terminal in your personal folder. Start your conda environment
  
 ```{.bash}
 conda activate ./snrnaAnalysis
