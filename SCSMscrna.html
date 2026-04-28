@@ -510,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We need to create a conda environment. An environment is a separate space where you can install softwares without affecting other users and the rest of the computing cluster. I prepared an environment file with the list of packages. Download it using the following command in the terminal:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/hds-sandbox/AdvancedSingleCell/raw/refs/heads/main/Modules/Wells_data_analysis/Environment/environment.yml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You should be able to see a new file in your folder, called <code>environment.yml</code>. Now give it to conda on the terminal to create an environment</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">-n</span> snrnaAnalysis <span class="at">-y</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">-p</span> ./snrnaAnalysis <span class="at">-y</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>It might take some time to do all installations. Once you are done, activate the environment with all the software contained into it:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snrnaAnalysis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You should see <code>(snrnaAnalysis)</code> at the beginning of the line in the terminal, which means that you are now using the <code>snrnaAnalysis</code> environment.</p>
@@ -529,28 +529,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="alignment-of-your-data" class="level1">
 <h1>Alignment of your data</h1>
-<p>Now we want to align the data to a reference genome. We will use the software <code>STAR</code> for this step. Use the virtual desktop and the file explorer to open the file <code>align_scrna_star.slurm</code>; you will find it in your directory under <code>singleCellMoleculeCourse/scRNA/</code> .</p>
+<p>Now we want to align the data to a reference genome. We will use the software <code>STAR</code> for this step. Use the virtual desktop and the file explorer to open the file <code>align_scrna_star_trimmed.slurm</code>; you will find it under <code>singleCellMoleculeCourse/scRNA/shared</code> .</p>
 <p>This file is a script that contains the commands to align the data. At the bottom of it you can see the important part of it, which aligns the data. It looks like this:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">STAR</span> <span class="dt">\</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">--runThreadN</span> <span class="st">"</span><span class="va">${SLURM_CPUS_PER_TASK</span><span class="op">:-</span>8<span class="va">}</span><span class="st">"</span> <span class="dt">\</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">--genomeDir</span> <span class="st">"</span><span class="va">$STAR_INDEX</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">--readFilesIn</span> <span class="st">"</span><span class="va">$R1</span><span class="st">"</span> <span class="st">"</span><span class="va">$R2</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">--readFilesIn</span> <span class="st">"</span><span class="va">$R2</span><span class="st">"</span> <span class="st">"</span><span class="va">$R1</span><span class="st">"</span> <span class="dt">\</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">--readFilesCommand</span> zcat <span class="dt">\</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloType</span> Droplet <span class="dt">\</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloCBwhitelist</span> None <span class="dt">\</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloBarcodeMate</span> 1 <span class="dt">\</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloBarcodeReadLength</span> 1 <span class="dt">\</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">--clip5pNbases</span> 14 0 <span class="dt">\</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloUMIstart</span> 1 <span class="at">--soloUMIlen</span> 6 <span class="dt">\</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloCBstart</span> 7 <span class="at">--soloCBlen</span> 8 <span class="dt">\</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloFeatures</span> Gene GeneFull <span class="dt">\</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">--alignIntronMin</span> 20 <span class="dt">\</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">--alignIntronMax</span> 1000000 <span class="dt">\</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">--alignMatesGapMax</span> 1000000 <span class="dt">\</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">--outSAMtype</span> None <span class="dt">\</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloMultiMappers</span> EM <span class="dt">\</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">--quantMode</span> GeneCounts <span class="dt">\</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">--outFileNamePrefix</span> <span class="st">"</span><span class="va">$SAMPLE_DIR</span><span class="st">/</span><span class="va">$SAMPLE</span><span class="st">."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloBarcodeReadLength</span> 0 <span class="dt">\</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloCBwhitelist</span> None <span class="dt">\</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloUMIstart</span> 1 <span class="at">--soloUMIlen</span> 6 <span class="dt">\</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloCBstart</span> 7 <span class="at">--soloCBlen</span> 8 <span class="dt">\</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloFeatures</span> Gene GeneFull <span class="dt">\</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">--alignIntronMin</span> 20 <span class="dt">\</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">--alignIntronMax</span> 1000000 <span class="dt">\</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">--alignMatesGapMax</span> 1000000 <span class="dt">\</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">--outSAMtype</span> None <span class="dt">\</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">--soloMultiMappers</span> EM <span class="dt">\</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">--quantMode</span> GeneCounts <span class="dt">\</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">--outFileNamePrefix</span> <span class="st">"</span><span class="va">$SAMPLE_DIR</span><span class="st">/</span><span class="va">$SAMPLE</span><span class="st">."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first line calls <code>STAR</code>, while the rest is a lot of options to configure the alignment. Below you can read the meaning of all of them in a table</p>
 <table class="caption-top table">
 <colgroup>
@@ -585,66 +583,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Type of single cell data. We use <code>Droplet</code> because we have droplet-based data.</td>
 </tr>
 <tr class="even">
-<td><code>--soloCBwhitelist</code></td>
-<td>Path to the whitelist of cell barcodes. We set it to <code>None</code> because we want to keep all the barcodes.</td>
-</tr>
-<tr class="odd">
-<td><code>--soloBarcodeMate</code></td>
-<td>Which read contains the cell barcode. We set it to 1 because the cell barcode is in the first read.</td>
-</tr>
-<tr class="even">
-<td><code>--soloBarcodeReadLength</code></td>
-<td>Length of the cell barcode. We set it to 1 because the cell barcode is in the first read and it is 8 bases long.</td>
-</tr>
-<tr class="odd">
-<td><code>--clip5pNbases</code></td>
-<td>Number of bases to clip from the 5’ end of the reads. We set it to 14 because the first 14 bases of the reads contain the cell barcode and UMI.</td>
-</tr>
-<tr class="even">
-<td><code>--soloUMIstart</code></td>
-<td>Position of the first base of the UMI. We set it to 1 because the UMI starts at the first base of the read.</td>
-</tr>
-<tr class="odd">
 <td><code>--soloUMIlen</code></td>
 <td>Length of the UMI. We set it to 6 because the UMI is 6 bases long.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>--soloCBstart</code></td>
 <td>Position of the first base of the cell barcode. We set it to 7 because the cell barcode starts at the 7th base of the read.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>--soloCBlen</code></td>
 <td>Length of the cell barcode. We set it to 8 because the cell barcode is 8 bases long.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>--soloFeatures</code></td>
 <td>Which features to quantify. We set it to <code>Gene GeneFull</code> to quantify both gene expression and full-length gene expression.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>--alignIntronMin</code></td>
 <td>Minimum intron length. We set it to 20 because we want to allow for short introns.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>--alignIntronMax</code></td>
 <td>Maximum intron length. We set it to 1000000 because we want to allow for long introns.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>--alignMatesGapMax</code></td>
 <td>Maximum gap between mates. We set it to 1000000 because we want to allow for long gaps between mates.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>--outSAMtype</code></td>
 <td>Output format of the alignment. We set it to <code>None</code> because we don’t want to output the alignment in SAM format.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>--soloMultiMappers</code></td>
 <td>How to handle multi-mapping reads. We set it to <code>EM</code> to use the Expectation-Maximization algorithm to assign multi-mapping reads to genes.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>--quantMode</code></td>
 <td>Which quantification mode to use. We set it to <code>GeneCounts</code> to quantify gene expression.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>--outFileNamePrefix</code></td>
 <td>Prefix for the output files. We set it to <code>$SAMPLE_DIR/$SAMPLE.</code> to save the output files in the sample directory with the sample name as prefix.</td>
 </tr>
@@ -652,10 +630,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <section id="run-the-alignment-and-check-the-final-summary" class="level2">
 <h2 class="anchored" data-anchor-id="run-the-alignment-and-check-the-final-summary">Run the alignment and check the final summary</h2>
-<p>The script above is the setup of our alignment. Now we tell to genomeDK that it needs to run using the resources written on the first lines of the text file. Right-click in the same folder and open a new terminal. In the terminal, type the following command to submit the job to the cluster:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> align_scrna_star.slurm ../shared/star_index raw_data/ aligned/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script above is the setup of our alignment. Now we tell to genomeDK that it needs to run using the resources written on the first lines of the text file. Right-click in your personal folder and open a new terminal. In the terminal, type the following command to submit the job to the cluster:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> ../shared/align_scrna_star_trimmed.slurm ../shared/star_index_dir b ./raw_data/DATA_1.fq.gz ./raw_data/DATA_2.fq.gz ./aligned/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>where you must substitute the file names of your data.</p>
 <p>You will see a message in the terminal with the job ID, which is a number that identifies your job on the cluster. You can check the status of your job by typing <code>squeue -u $USER</code> in the terminal. When your job is finished, you will see a new folder called <code>aligned</code> in your directory, which contains the output files of the alignment.</p>
-<p>You should be able to find a folder with name ending with <code>.Solo.out</code>, which contains the results of the alignment and quantification. Inside this folder, you will find a file called <code>GeneFull/summary.csv</code>. Open it and read the statistics: did you recover a good amount of cells? Are there many transcripts per cell? How many reads were mapped to the genome? These are some of the questions you can answer by looking at the summary file.</p>
+<p>You should be able to see the folder <code>./aligned/</code> to find a folder with name ending with <code>.Solo.out</code>, which contains the results of the alignment and quantification. Inside this folder, you will find a file called <code>GeneFull/summary.csv</code>. Open it and read the statistics: did you recover a good amount of cells? Are there many transcripts per cell? How many reads were mapped to the genome? These are some of the questions you can answer by looking at the summary file.</p>
 </section>
 </section>
 <section id="analysis-tutorial" class="level1">
@@ -664,7 +643,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="running-the-notebooks" class="level2">
 <h2 class="anchored" data-anchor-id="running-the-notebooks">Running the notebooks</h2>
 <p>You can run the notebooks on the cluster using <code>jupyterlab</code>, a simple interface for coding. Open a new terminal in your personal folder. Start your conda environment</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snrnaAnalysis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate ./snrnaAnalysis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To start <code>jupyterlab</code>, run the following command in the terminal:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab <span class="at">--port</span><span class="op">=</span><span class="va">$UID</span> <span class="at">--ip</span><span class="op">=</span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will start a <code>jupyterlab</code> session on the cluster. <strong>If the browser is not opened automatically</strong>, you will see a message in the terminal with an URL of the type: <code>http://cn-1033:12345/lab?token=...</code>. Copy the whole URL and paste it in the web browser (which you will open in the virtual desktop).</p>

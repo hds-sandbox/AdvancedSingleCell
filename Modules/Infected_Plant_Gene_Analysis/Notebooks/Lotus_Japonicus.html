@@ -853,7 +853,7 @@ NCTAAAGATCACACTAAGGCAACTCATGGAGGGGTCTTCAAAGA
 <section id="number-of-transcripts-per-cell" class="level4">
 <h4 class="anchored" data-anchor-id="number-of-transcripts-per-cell">Number of transcripts per cell</h4>
 <p>We plot a histogram of the number of transcripts per cell in <a href="#fig-rnacount">Figure&nbsp;7</a> below. On the right, we zoom into the histogram. We want to <strong>filter out the cells with the lowest number of transcripts</strong> - often there is a peak we can identify with a group of low-quality cells. Here we can choose to remove cells with less than ~700 transcripts (some people prefere to do a lighter filtering, and would for example set a threshold to a lower value). We remove also <strong>cells with too many transcripts</strong> that might contain some weird transcripts - which is also helpful for normalization because it removes some outlying values. For those we can set a limit to 30000, where there is a very thin tail in the histogram.</p>
-<div id="fig-rnacount" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-rnacount" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rnacount-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">14</span>, <span class="at">repr.plot.height=</span><span class="dv">5</span>)</span>
@@ -876,7 +876,7 @@ Figure&nbsp;1
 <section id="number-of-detected-genes-per-cell" class="level4">
 <h4 class="anchored" data-anchor-id="number-of-detected-genes-per-cell">Number of detected genes per cell</h4>
 <p>Here we work similarly to filter out cells based on how many genes are detected (<a href="#fig-genecounts">Figure&nbsp;8</a>). The right-side plot is a zoom into the histogram. It seems easy to set the thresholds at ~400 and ~7000 detected genes.</p>
-<div id="fig-genecounts" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-genecounts" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-genecounts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">14</span>, <span class="at">repr.plot.height=</span><span class="dv">5</span>)</span>
@@ -900,7 +900,7 @@ Figure&nbsp;2
 <section id="mitochondrial-and-chloroplast-percentages" class="level4">
 <h4 class="anchored" data-anchor-id="mitochondrial-and-chloroplast-percentages">Mitochondrial and Chloroplast percentages</h4>
 <p>The percentages of mitochondrial and chloroplastic transcripts tells us the data is of good quality, since most cells have low values of those (<a href="#fig-mt">Figure&nbsp;9</a>). Thresholds are usually set between 5% and 20% in single cell data analysis. In the paper, thresholds were for example set at 20%.</p>
-<div id="fig-mt" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-mt" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">14</span>, <span class="at">repr.plot.height=</span><span class="dv">5</span>)</span>
@@ -922,7 +922,7 @@ Figure&nbsp;3
 <section id="counts-features-relationship" class="level4">
 <h4 class="anchored" data-anchor-id="counts-features-relationship">Counts-Features relationship</h4>
 <p>In <a href="#fig-gentra">Figure&nbsp;10</a> below, we look at the plot of the number of transcripts per cell vs the number of detected genes per cell. Usually, those two measure grow simultaneously. At lower counts the relationship is quite linear, then becomes a curve, typically bending in favour of the number of transcripts per cell. You can see below that each dot (representing a droplet) is coloured by percentage of mitochondria. Droplets with a high percentage of mitochondrial genes also have very low amount of transcripts and detected genes, <strong>confirming that high mitochondrial content is a measure of low quality</strong>.</p>
-<div id="fig-gentra" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-gentra" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-gentra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">14</span>, <span class="at">repr.plot.height=</span><span class="dv">5</span>)</span>
@@ -941,7 +941,7 @@ Figure&nbsp;4
 </figure>
 </div>
 <p>In a similar way the chloroplastic genes confirm the pattern of low quality droplets.</p>
-<div id="fig-gentrach" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-gentrach" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-gentrach-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">14</span>, <span class="at">repr.plot.height=</span><span class="dv">5</span>)</span>
@@ -984,7 +984,7 @@ Figure&nbsp;5
 <span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>( <span class="fu">dim</span>(Control1_seurat_filt) )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now the transcripts vs genes can be seen in <a href="#fig-filtrelationship">Figure&nbsp;12</a>. The relationship is much more linear than previously after the removal of extreme values for transcripts and detected genes.</p>
-<div id="fig-filtrelationship" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-filtrelationship" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-filtrelationship-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">14</span>, <span class="at">repr.plot.height=</span><span class="dv">5</span>)</span>
@@ -1021,7 +1021,7 @@ Figure&nbsp;6
 <p>We want to look into other possible sources of variation. Those are usually quantities we calculate for each cell, for example the percentage of mitochondrial and chloroplastic genes.</p>
 <p>To see if those quantities actually influence our data a lot, we check how much is their highest correlation with the first 10 components of the PCA of the dataset. In short, <strong>we see if any technical variation is such that it explains much of the variability of the data, covering possibly biological signal</strong>.</p>
 <p>We now use the function <code>plotCorrelations</code> to plot the highest correlation of three quantities with the PCA: number of transcripts, percent of mitochondrial genes and percent of chloroplastic genes. You will see in <a href="#fig-corr">Figure&nbsp;13</a> how <strong>there is little correlation for the two percentages</strong>, for which we do not need to worry about, while <strong>there is correlation with the total number of transcripts per cell</strong> (this is always expected and, as mentioned before, is removed automatically by the normalization process). We created the function <code>plotCorrelations</code> specifically for the course, together with a few others, mostly for plotting or handling tables. You can find them in the file <code>script.R</code>.</p>
-<div id="fig-corr" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-corr" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotCorrelations</span>( <span class="at">object=</span>Control1_seurat, <span class="at">measures=</span><span class="fu">c</span>(<span class="st">'nCount_RNA'</span>, <span class="st">'percent.mt'</span>, <span class="st">'percent.chloroplast'</span>) )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1101,7 +1101,7 @@ Figure&nbsp;9
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">seed.use =</span> <span class="dv">123</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In <a href="#fig-umap">Figure&nbsp;16</a> we can see the resulting projection. The result looks pretty neat and structured (we can clearly see there are various clusters).</p>
-<div id="fig-umap" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-umap" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">10</span>, <span class="at">repr.plot.height=</span><span class="dv">8</span>)</span>
@@ -1155,7 +1155,7 @@ Warning
 <span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">seurat.ncells=</span><span class="dv">3000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We visualize the UMAP plot and which cells are estimated doublets in <a href="#fig-doublets">Figure&nbsp;18</a>. Fortunately, there are only a few potential doublets.</p>
-<div id="fig-doublets" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-doublets" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-doublets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">10</span>, <span class="at">repr.plot.height=</span><span class="dv">10</span>)</span>
@@ -1273,7 +1273,7 @@ Figure&nbsp;12
 <div id="976b2547-b8f3-4020-a5b6-f821e681f0c5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>seurat.integrated <span class="ot">&lt;-</span> <span class="fu">SetIdent</span>(seurat.integrated, <span class="at">value =</span> <span class="st">"orig.ident"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="fig-umapint" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-umapint" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-umapint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">10</span>, <span class="at">repr.plot.height=</span><span class="dv">8</span>)</span>
@@ -1305,7 +1305,7 @@ Figure&nbsp;13
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>( seurat.integrated<span class="sc">@</span>meta.data )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can plot the clusters in the UMAP plot</p>
-<div id="fig-umapleiden" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-umapleiden" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-umapleiden-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">10</span>, <span class="at">repr.plot.height=</span><span class="dv">8</span>)</span>
@@ -1428,7 +1428,7 @@ Note
 </div>
 </div>
 <p>It seems from <a href="#fig-umapbyeye">Figure&nbsp;23</a> that we have quite consistent clustering across the various cell types.</p>
-<div id="fig-umapbyeye" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-umapbyeye" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-umapbyeye-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">10</span>, <span class="at">repr.plot.height=</span><span class="dv">10</span>)</span>
@@ -1456,7 +1456,7 @@ Figure&nbsp;16
 <span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>seurat.clustered<span class="sc">@</span>meta.data<span class="sc">$</span>Cell_types <span class="ot">&lt;-</span> celltypes</span>
 <span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(seurat.clustered) <span class="ot">&lt;-</span> <span class="st">'Cell_types'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="fig-umapsubcluster" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-umapsubcluster" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-umapsubcluster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">10</span>, <span class="at">repr.plot.height=</span><span class="dv">10</span>)</span>
@@ -1514,7 +1514,7 @@ Figure&nbsp;17
 <div id="613965db-0030-4bfe-aeff-15bef935ea77" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(seurat.clustered) <span class="ot">&lt;-</span> <span class="st">'predicted.id'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="fig-transfer" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-transfer" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transfer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">10</span>, <span class="at">repr.plot.height=</span><span class="dv">10</span>)</span>
@@ -1555,7 +1555,7 @@ Figure&nbsp;18
 <h2 class="anchored" data-anchor-id="differential-gene-expression-dge">Differential Gene Expression (DGE)</h2>
 <p>Here we test each cluster to see which are significantly more expressed genes in the infected samples compared to the wild-type samples. We also see if we find the gene RINRK1 as being significant. Again, the resulting genes can be useful to be integrated with the GO terms as we did before.</p>
 <p>We first have a quick look to see how much the RINRK1 gene is expressed in the data. We use the <code>RNA</code> assay to plot the true expression values. The UMAP plot shows few cells expressing the genes, meaning its average expression is going to be very low, so it is likely we will not find the gene to be differentially expressed anywhere.</p>
-<div id="fig-rinrk" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-tags="[]">
+<div id="fig-rinrk" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tags="[]" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rinrk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>RINRK1.id <span class="ot">&lt;-</span> <span class="st">'LotjaGi1g1v0182900'</span></span>
@@ -1775,7 +1775,7 @@ Note
 <h3 class="anchored" data-anchor-id="select-soft-power-threshold">Select soft-power threshold</h3>
 <p>Next we will select the soft power threshold. This is an extremely important step in the pipeline. <code>hdWGCNA</code> constructs a gene-gene correlation adjacency matrix to infer co-expression relationships between genes. The correlations are <strong>raised to a power to reduce the amount of noise present in the correlation matrix</strong>, thereby <strong>retaining the strong connections and removing the weak connections</strong>. Therefore, it is critical to determine a proper value for the soft power threshold.</p>
 <p>We use the function <code>TestSoftPowers</code> to perform a parameter sweep for different soft power thresholds. This function helps us to guide our choice in a soft power threshold for constructing the co-expression network by inspecting the resulting network topology for different power values. The following code performs the parameter sweep and outputs a summary figure.</p>
-<div id="fig-sweep" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-scrolled="true" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}">
+<div id="fig-sweep" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;r&quot;}}" data-scrolled="true">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sweep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test different soft powers:</span></span>
