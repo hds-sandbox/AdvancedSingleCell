@@ -14,6 +14,9 @@ dependencies:
   - r-harmony 
   - r-enrichr 
   - r-devtools
+  - bioconductor-ucell 
+  - bioconductor-genomicranges 
+  - bioconductor-geneoverlap
   - jupyterlab
   - seqtk
   - pip
