@@ -1,0 +1,40 @@
+project:
+  type: website
+
+website:
+  title: "Advanced single cell analysis"
+  navbar:
+    logo: /img/logo.png
+    left:
+      - href: index.qmd
+        text: Home
+      - href: Modules/Infected_Plant_Gene_Analysis/Notebooks/Lotus_Japonicus.ipynb
+        text: 10x data
+      - text: Celseq
+        menu:
+          - href: Modules/wells_data_analysis/Notebooks/Part00_Faba_Bean_intro.ipynb
+            text: Introduction
+          - href: Modules/wells_data_analysis/Notebooks/Part01_Faba_Bean_preprocess.ipynb
+            text: Preprocessing
+      - text: SCSM course
+        menu:
+          - href: SCSMaccess.qmd
+            text: Access
+#          - href: SCSMsmf.qmd
+#            text: Single Molecule Fluorescent
+          - href: SCSMscrna.qmd
+            text: Single nuclei RNA-seq
+    right: 
+      - icon: github
+        href: https://github.com/hds-sandbox/AdvancedSingleCell
+        aria-label: GitHub
+      
+
+format:
+  html:
+    theme: 
+      light: [materia, css/materialight.scss]
+      dark: darkly
+    toc: true
+    include-in-header:
+      - file: "resources/bioschema.html"

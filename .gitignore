@@ -44,3 +44,8 @@ vignettes/*.pdf
 .DS_Store
 .ipynb_checkpoints
 Data
+Modules/Infected_Plant_Gene_Analysis/Notebooks/data.h5Seurat
+.gitignore
+Modules/Infected_Plant_Gene_Analysis/Notebooks/dataInt.rds
+Modules/Infected_Plant_Gene_Analysis/Notebooks/data.rds
+Modules/Wells_data_analysis/Notebook/data.rds

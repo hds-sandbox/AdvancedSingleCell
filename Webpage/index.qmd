@@ -1,0 +1,60 @@
+---
+title: "Advanced single cell analysis"
+format: html
+date-modified: last-modified
+date-format: long
+date: 2024-03-06
+#bibliography: resources/references.bib
+#https://emojidb.org/quarto-emojis for emojis copypaste
+---
+
+Welcome! This homepage contains **specialized tutorials** to perform single cell analysis. The main languages proposed here are `python` and `R`, and rarely `bash` for specific command-line tools. The page will be populated both with examples of complete downstream analysis and guides for specific tasks, such as gene networks, cell-cell communication, clustering techniques, integration and comparison, data visualization.
+
+All available tutorials are found in the toolbar menu `Material`.
+
+## Running the notebooks
+
+All tutorials can be seen in this webpage as compiled jupyter notebooks for inspiration and self-learning. To execute the notebooks you have various options:
+
+- Access to the uCloud interactive computing system (for danish universities/institutional users), where we have developed the `Transcriptomics Sandbox` app. This has a wide choice of modules for self-learning in transcriptomics (bulkRNA and single cell RNA analysis).
+
+- Access to GenomeDK (danish bioinformatics cluster, for which you need to have an account) and execution of a Docker container through `singularity`.
+
+- Docker container, executable on any system running the Docker engine (we suggest using your own/local computing cluster or a performant computer, since most tutorials will need a large amount of RAM memory and CPU power). You can also run the Docker container through the `Singularity` software.
+
+- Package setup on a Conda environment, where you create a conda environment and perform the package installations to run the tutorials (note that some packages are not present in conda, and you need to install them manually by opening `R`).
+
+The instructions are found in the toolbar menu `Access`.
+
+## Available tutorials
+
+### Integrated Analysis of Single-Cell Transcriptomics Datasets Across Conditions
+
+Integrated analysis of single-cell transcriptomics datasets from the plant species *Lotus Japonicus*. The datasets are *control* and *rhizobia-infected* root samples. This data offers a comprehensive example for data integration and analysis of 
+
+- key regulatory networks
+- signaling pathways
+- cell-type-specific responses to infections 
+
+The comparative analysis includes clustering, conserved and divergent transcriptional signatures, gene networks, use of GO terms, differential expression. 
+
+The presented tutorial does not only enhance the understanding of implications of specific conditions, but also provides valuable insights for comparative analysis in the health field. By extrapolating methodologies and findings, researchers can apply similar integrative approaches to analyze single-cell transcriptomics datasets from human or animal studies under different disease conditions. 
+
+This cross-disciplinary approach facilitates the identification of shared regulatory networks and disease-specific signatures, advancing our knowledge of host-pathogen interactions and aiding in the development of targeted therapeutic interventions for infectious diseases.
+
+#### Data availability
+
+<div style="text-align: center;">
+  <a href="https://zenodo.org/records/10782590" style="display: inline-block; margin-right: 20px; background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Data repository</a>
+  <a href="https://github.com/hds-sandbox/AdvancedSingleCell/tree/main/Modules/Infected_Plant_Gene_Analysis" style="display: inline-block; background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Code repository</a>
+</div>
+
+
+
+### Acknowledgements
+
+If you publish a paper or present a project where you have used our material:
+
+- cite the data (with the Zenodo DOI and also the eventual publication presenting the data)
+- cite the tutorials repository (with the Zenodo DOI ???)
+- acknowledge the Novo Nordisk Foundation grant *Danish halth data science sandbox, Grant Number NNF20OC0063268 *

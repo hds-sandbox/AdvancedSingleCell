@@ -76,51 +76,6 @@ renameScores <- function(markers_list,
     return(seurat_data)
     }
 
-#a function to add go terms to a table
-#addGOterms <- function(input_table, go_table, gene_column='gene'){
-#    goterms_vector <- c()
-
-#    for(j in input_table[[gene_column]]){
-#    goterms <- go_table[ grepl(j, go_table[,2]), ]$V2
-#    if(length(goterms)>0){  
-#        split_goterms <- sapply( goterms, function(x) strsplit(x, split = '\\|')[[1]][1] )
-#        unique_goterms <- unique( unlist(split_goterms) )
-#        goterms_vector <- c(goterms_vector, paste(unique_goterms, collapse=' '))
-#        }
-#    else{
-#            goterms_vector <- c(goterms_vector, 'Undefined')
-#        }
-#    }
-#    input_table$GO <- goterms_vector
-#
-#    return(input_table)
-#    }
-
-#a function to add go terms to a table - parallelized using multithreaded option (FORK or PSOCK mode). Any other name would be interpreted as FALSE.
-addGOterms <- function(input_table, go_table, gene_column='gene', n.cores=4){
-
-    plan("multicore", workers = n.cores)
-
-    goterms_vector <- foreach(j = input_table[[gene_column]],
-                              .combine = 'c'
-                              ) %dofuture% {
-
-    goterms <- go_table[ grepl(j, go_table[,2]), ]$V2
-    #message(j)
-    goterms <- go_table[ grepl(j, go_table[,2]), ]$V2
-    if(length(goterms)>0){  
-        split_goterms <- sapply( goterms, function(x) strsplit(x, split = '\\|')[[1]][1] )
-        unique_goterms <- unique( unlist(split_goterms) )
-        paste(unique_goterms, collapse=' ')
-        }
-    else{
-            'Undefined'
-        }
-    }
-    input_table$GO <- goterms_vector
-
-    return(input_table)
-    }
 
 
 ## Function that check for the presence of data and
@@ -131,33 +86,50 @@ downloadData <- function(){
 if (!dir.exists("../Data")) {
   message("Data folder does not exists! Create one")
   dir.create("../Data")
+  dir.create("../Data/faba1")
+  dir.create("../Data/faba2")
+  dir.create("../Data/faba3")
 } else {
   message("Data folder exists. Check for files and eventually downloads them. Please wait.")
 }
 
-if (!file.exists("../Data/control1.gz") && !dir.exists("../Data/control1")){
-    message("Download ../Data/control1.gz and unzip")
-    system("wget https://zenodo.org/records/10782590/files/control1.gz?download=1 -O ../Data/control1.gz")
-    system("tar -xvf ../Data/control1.gz -C ../Data")}
-if (!file.exists("../Data/control2.normalized.h5Seurat")){
-    message("Download control2.normalized.h5Seurat")
-    system("wget https://zenodo.org/records/10782590/files/control2.normalized.h5Seurat?download=1 -O ../Data/control2.normalized.h5Seurat")}
-if (!file.exists("../Data/infected1.normalized.h5Seurat")){
-      message("Download infected1.normalized.h5Seurat")
-      system("wget https://zenodo.org/records/10782590/files/infected1.normalized.h5Seurat?download=1 -O ../Data/infected1.normalized.h5Seurat")}
-if (!file.exists("../Data/infected2.normalized.h5Seurat")){
-      message("Download infected2.normalized.h5Seurat")
-      system("wget https://zenodo.org/records/10782590/files/infected2.normalized.h5Seurat?download=1 -O ../Data/infected2.normalized.h5Seurat")}
-if (!file.exists("../Data/data_lavinia.RDS")){
-      message("Download reference clustering")
-      system("wget https://zenodo.org/records/10782590/files/data_lavinia.RDS?download=1 -O ../Data/data_lavinia.RDS")}
-if (!file.exists("../Data/LJ_GO_terms.gaf")){
-      message("Download Go terms data")
-      system("wget https://zenodo.org/records/10782590/files/LJ_GO_terms.gaf?download=1 -O ../Data/LJ_GO_terms.gaf")}
+if (!file.exists("../Data/faba1.tar") ){
+    message("Download ../Data/faba1.tar and unzip")
+    system("wget https://github.com/hds-sandbox/AdvancedSingleCell/raw/refs/heads/main/Modules/Wells_data_analysis/Datasets/faba1.tar -O ../Data/faba1.tar")
+    system("tar -xvf ../Data/faba1.tar -C ../Data/faba1 --strip-components=1")}
+
+if (!file.exists("../Data/faba2.tar") ){
+    message("Download ../Data/faba2.tar and unzip")
+    system("wget https://github.com/hds-sandbox/AdvancedSingleCell/raw/refs/heads/main/Modules/Wells_data_analysis/Datasets/faba2.tar -O ../Data/faba2.tar")
+    system("tar -xvf ../Data/faba2.tar -C ../Data/faba2 --strip-components=6")}
+
+if (!file.exists("../Data/faba3.tar") ){
+    message("Download ../Data/faba3.tar and unzip")
+    system("wget https://github.com/hds-sandbox/AdvancedSingleCell/raw/refs/heads/main/Modules/Wells_data_analysis/Datasets/faba3.tar -O ../Data/faba3.tar")
+    system("tar -xvf ../Data/faba3.tar -C ../Data/faba3 --strip-components=6")}
+
 message("Done!")
 }
 
+## Converts the genes of the faba bean dataset to the corresponding orthologs
+##
+geneConvert <- function(seuratObject, genes, from, to){
+    message("Converting gene names to orthologs. Please wait.")
+    ortho <- readr::read_delim("https://github.com/hds-sandbox/AdvancedSingleCell/raw/refs/heads/main/Modules/Wells_data_analysis/Datasets/orthologTable.csv", ";")
+    #error if from and to do not match one of the columns of the ortholog table
+    if( !(from %in% colnames(ortho)) | !(to %in% colnames(ortho)) ){
+        stop("Error: from and to must be one of the columns of the ortholog table. Names are: ", paste(colnames(ortho), collapse=", "))
+    }   
 
+    oldNames <- rownames(seuratObject)
+    oldNames <- unlist( sapply( oldNames, function(x) gsub("GeneNAME", "", x) ) )
+    newNames <- ortho %>%
+            filter(str_detect(from, genes)) %>%
+            pull(to)
+    
+    return(newNames)
+}
+    
 ## Function that assigns cluster names
 ## based on the highest score for the markers
 ## unnamed clusters must be in the Ident() of the object

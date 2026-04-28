@@ -4,10 +4,11 @@ channels:
 
 dependencies:
   - star>=2.7.11b,<3
-  - salmon
-  - lima
   - r-seurat
+  - r-pacman
+  - r-stringi
   - jupyterlab
-  - scanpy
   - seqtk
   - pip
+  - pip:
+      - jupyterlab-quarto
