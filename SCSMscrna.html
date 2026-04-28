@@ -642,7 +642,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Follow tutorial notebooks to analyze your own data. Notebooks are interactive documents with text, images, code and results from the code.</p>
 <section id="running-the-notebooks" class="level2">
 <h2 class="anchored" data-anchor-id="running-the-notebooks">Running the notebooks</h2>
-<p>You can run the notebooks on the cluster using <code>jupyterlab</code>, a simple interface for coding. Open a new terminal in your personal folder. Start your conda environment</p>
+<p>You can run the notebooks on the cluster using <code>jupyterlab</code>, a simple interface for coding. Before starting that, copy the two files in format <code>.ipynb</code> from the shared folder into your personal folder.</p>
+<p>Then open a new terminal in your personal folder. Start your conda environment</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate ./snrnaAnalysis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To start <code>jupyterlab</code>, run the following command in the terminal:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab <span class="at">--port</span><span class="op">=</span><span class="va">$UID</span> <span class="at">--ip</span><span class="op">=</span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
