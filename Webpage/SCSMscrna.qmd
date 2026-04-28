@@ -37,7 +37,7 @@ wget https://github.com/hds-sandbox/AdvancedSingleCell/raw/refs/heads/main/Modul
 You should be able to see a new file in your folder, called `environment.yml`. Now give it to conda on the terminal to create an environment
 
 ```{.bash}
-conda env create -f environment.yml -n snrnaAnalysis -y
+conda env create -f environment.yml -p ./snrnaAnalysis -y
 ```
 
 It might take some time to do all installations. Once you are done, activate the environment with all the software contained into it:
@@ -68,7 +68,7 @@ Select any source of download when asked. When the installations are successful,
 
 # Alignment of your data
 
-Now we want to align the data to a reference genome. We will use the software `STAR` for this step. Use the virtual desktop and the file explorer to open the file `align_scrna_star.slurm`; you will find it in your directory under `singleCellMoleculeCourse/scRNA/`
+Now we want to align the data to a reference genome. We will use the software `STAR` for this step. Use the virtual desktop and the file explorer to open the file `align_scrna_star_trimmed.slurm`; you will find it under `singleCellMoleculeCourse/scRNA/shared`
 . 
 
 This file is a script that contains the commands to align the data. At the bottom of it you can see the important part of it, which aligns the data. It looks like this:
@@ -77,13 +77,11 @@ This file is a script that contains the commands to align the data. At the botto
 STAR \
         --runThreadN "${SLURM_CPUS_PER_TASK:-8}" \
         --genomeDir "$STAR_INDEX" \
-        --readFilesIn "$R1" "$R2" \
+        --readFilesIn "$R2" "$R1" \
         --readFilesCommand zcat \
         --soloType Droplet \
+        --soloBarcodeReadLength 0 \
         --soloCBwhitelist None \
-        --soloBarcodeMate 1 \
-        --soloBarcodeReadLength 1 \
-        --clip5pNbases 14 0 \
         --soloUMIstart 1 --soloUMIlen 6 \
         --soloCBstart 7 --soloCBlen 8 \
         --soloFeatures Gene GeneFull \
@@ -104,12 +102,7 @@ The first line calls `STAR`, while  the rest is a lot of options to configure th
 | `--genomeDir` | Path to the STAR index of the reference genome. |
 | `--readFilesIn` | Paths to the input FASTQ files. |
 | `--readFilesCommand` | Command to decompress the input files. We use `zcat` because the input files are compressed in gzip format. |
-| `--soloType` | Type of single cell data. We use `Droplet` because we have droplet-based data. |
-| `--soloCBwhitelist` | Path to the whitelist of cell barcodes. We set it to `None` because we want to keep all the barcodes. |
-| `--soloBarcodeMate` | Which read contains the cell barcode. We set it to 1 because the cell barcode is in the first read. |
-| `--soloBarcodeReadLength` | Length of the cell barcode. We set it to 1 because the cell barcode is in the first read and it is 8 bases long. |
-| `--clip5pNbases` | Number of bases to clip from the 5' end of the reads. We set it to 14 because the first 14 bases of the reads contain the cell barcode and UMI. |
-| `--soloUMIstart` | Position of the first base of the UMI. We set it to 1 because the UMI starts at the first base of the read. |
+| `--soloType` | Type of single cell data. We use `Droplet` because we have droplet-based data. || `--soloUMIstart` | Position of the first base of the UMI. We set it to 1 because the UMI starts at the first base of the read. |
 | `--soloUMIlen` | Length of the UMI. We set it to 6 because the UMI is 6 bases long. |
 | `--soloCBstart` | Position of the first base of the cell barcode. We set it to 7 because the cell barcode starts at the 7th base of the read. |
 | `--soloCBlen` | Length of the cell barcode. We set it to 8 because the cell barcode is 8 bases long. |        
@@ -125,15 +118,17 @@ The first line calls `STAR`, while  the rest is a lot of options to configure th
 ## Run the alignment and check the final summary
 
 The script above is the setup of our alignment. Now we tell to genomeDK that it needs to run using the resources written on the first lines of the text file.
-Right-click in the same folder and open a new terminal. In the terminal, type the following command to submit the job to the cluster:
+Right-click in your personal folder and open a new terminal. In the terminal, type the following command to submit the job to the cluster:
 
 ```{.bash}
-sbatch align_scrna_star.slurm ../shared/star_index raw_data/ aligned/
+sbatch ../shared/align_scrna_star_trimmed.slurm ../shared/star_index_dir b ./raw_data/DATA_1.fq.gz ./raw_data/DATA_2.fq.gz ./aligned/
 ```
+
+where you must substitute the file names of your data.
 
 You will see a message in the terminal with the job ID, which is a number that identifies your job on the cluster. You can check the status of your job by typing `squeue -u $USER` in the terminal. When your job is finished, you will see a new folder called `aligned` in your directory, which contains the output files of the alignment.
 
-You should be able to find a folder with name ending with `.Solo.out`, which contains the results of the alignment and quantification. Inside this folder, you will find a file called `GeneFull/summary.csv`. Open it and read the statistics: did you recover a good amount of cells? Are there many transcripts per cell? How many reads were mapped to the genome? These are some of the questions you can answer by looking at the summary file.
+You should be able to see the folder `./aligned/` to find a folder with name ending with `.Solo.out`, which contains the results of the alignment and quantification. Inside this folder, you will find a file called `GeneFull/summary.csv`. Open it and read the statistics: did you recover a good amount of cells? Are there many transcripts per cell? How many reads were mapped to the genome? These are some of the questions you can answer by looking at the summary file.
 
 # Analysis tutorial
 
@@ -144,7 +139,7 @@ Follow tutorial notebooks to analyze your own data. Notebooks are interactive do
  You can run the notebooks on the cluster using `jupyterlab`, a simple interface for coding. Open a new terminal in your personal folder. Start your conda environment
  
 ```{.bash}
-conda activate snrnaAnalysis
+conda activate ./snrnaAnalysis
 ```
  
 To start `jupyterlab`, run the following command in the terminal:
