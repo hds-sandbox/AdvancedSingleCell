@@ -1,5 +1,4 @@
 channels:
-    - r
     - conda-forge
     - bioconda
 dependencies:
@@ -7,7 +6,7 @@ dependencies:
     - ipykernel
     - scanpy
     - r-tidyr
-    - r-seurat=4.4.0
+    - r-seurat>=5.0.0
     - bioconductor-mast
     - bioconductor-multtest
     - r-metap
