@@ -18,3 +18,4 @@ dependencies:
     - r-qlcmatrix
     - r-matrix=1.6_1
     - r-dofuture
+    - r-pacman
