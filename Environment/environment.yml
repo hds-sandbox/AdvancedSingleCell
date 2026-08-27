@@ -19,3 +19,5 @@ dependencies:
     - r-matrix=1.6_1
     - r-dofuture
     - r-pacman
+    - pip:
+        - bento-tools
